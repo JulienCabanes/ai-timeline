@@ -84,6 +84,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font
 .lang a:hover{color:var(--ink)}
 .hero h1{font-family:var(--display);font-weight:800;font-stretch:78%;font-size:clamp(46px,9vw,108px);line-height:.9;letter-spacing:-.02em;margin:0 0 22px}
 .lede{font-size:20px;max-width:58ch;margin:0 0 36px}
+.march{margin:0 0 34px;border-radius:14px;overflow:hidden}
+.march img{display:block;width:100%;height:auto}
 .legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 36px;border-top:1px solid var(--line);padding-top:22px}
 .legend h2{font-family:var(--display);font-size:18px;font-weight:700;margin:0 0 6px}
 .legend p{margin:0;font-size:15px;color:var(--muted);max-width:42ch}
@@ -178,6 +180,8 @@ body.simple .lvl-minor{display:none}
   body{font-size:16px}
   .hero{padding:40px 16px 28px}
   .lede{font-size:18px}
+  .march{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .march img{width:760px;max-width:none}
   .legend{grid-template-columns:1fr;gap:18px}
   .legend .desk-only{display:none}
   .legend .mob-only{display:block}
@@ -230,6 +234,7 @@ body.simple .lvl-minor{display:none}
   <h1>What we’ve called “AI”</h1>
   <p class="lede">Since 1956, the word has meant very different things, and its roots go back much further. Each stage was added on top of the previous ones without replacing them.</p>
   <p class="stamp">As of October 5, 2026. <a href="#about">Method, sources and known biases</a> at the end of the page.</p>
+  <figure class="march"><img src="../march-en.jpg" width="1424" height="752" alt="Seven robots walk in single file along a timeline, each taller and more upright than the last: symbolic AI (1950 – 1990), machine learning (1990 – 2012), deep learning (2012 – 2017), transformers (2017 – 2022), generative AI (2022 – 2023), agentic AI (2023 – today) and, in dashed outline, physical AI (tomorrow)."></figure>
   <div class="legend">
     <div>
       <h2>The banner</h2>
