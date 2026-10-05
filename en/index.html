@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What we’ve called “AI”: the timeline</title>
+<meta name="description" content="An interactive timeline of artificial intelligence, from early ideas to agentic AI: techniques, modalities, turning points, controversies and sources.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="What we’ve called “AI”: the timeline">
+<meta property="og:description" content="From antiquity to 2026: what the word “AI” has meant, how modalities converge, and what remains to be done.">
+<link rel="alternate" hreflang="en" href="./">
+<link rel="alternate" hreflang="fr" href="../">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%A7%B5%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF1EF; --surface:#F7F9F8; --ink:#17212B; --muted:#55606C; --line:#C5CED1; --axis:#9FAAB2;
+  --hatch:rgba(70,100,135,.10); --dash-bg:rgba(237,241,239,.93);
+  --f-regles:#807055; --o-regles:#FFFFFF; --t-regles:#76654A;
+  --f-stat:#23806F;   --o-stat:#FFFFFF;   --t-stat:#1C6B5D;
+  --f-dl:#3354C4;     --o-dl:#FFFFFF;     --t-dl:#2D4AB0;
+  --f-tf:#8441C2;     --o-tf:#FFFFFF;     --t-tf:#7639AE;
+  --f-gen:#C2367A;    --o-gen:#FFFFFF;    --t-gen:#A52D67;
+  --f-multi:#EDB032;  --o-multi:#1B1404;  --t-multi:#94650A;
+  --display:"Bricolage Grotesque","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --text:"Atkinson Hyperlegible","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1720; --surface:#16212C; --ink:#E3E9EE; --muted:#9AA6B2; --line:#2B3846; --axis:#4B5A68;
+    --hatch:rgba(150,180,215,.09); --dash-bg:rgba(15,23,32,.92);
+    --t-regles:#CDBB98; --t-stat:#5FC6B1; --t-dl:#8DA4FF; --t-tf:#C79CF2; --t-multi:#F3C35E; --t-gen:#F28FBE;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1720; --surface:#16212C; --ink:#E3E9EE; --muted:#9AA6B2; --line:#2B3846; --axis:#4B5A68;
+  --hatch:rgba(150,180,215,.09); --dash-bg:rgba(15,23,32,.92);
+  --t-regles:#CDBB98; --t-stat:#5FC6B1; --t-dl:#8DA4FF; --t-tf:#C79CF2; --t-multi:#F3C35E; --t-gen:#F28FBE;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+
+.fam-regles{--fc:var(--f-regles);--fo:var(--o-regles);--ft:var(--t-regles)}
+.fam-stat{--fc:var(--f-stat);--fo:var(--o-stat);--ft:var(--t-stat)}
+.fam-dl{--fc:var(--f-dl);--fo:var(--o-dl);--ft:var(--t-dl)}
+.fam-tf{--fc:var(--f-tf);--fo:var(--o-tf);--ft:var(--t-tf)}
+.fam-gen{--fc:var(--f-gen);--fo:var(--o-gen);--ft:var(--t-gen)}
+.fam-multi{--fc:var(--f-multi);--fo:var(--o-multi);--ft:var(--t-multi)}
+.fam-reg{--fc:var(--ink);--fo:var(--bg);--ft:var(--muted)}
+.fam-future{--fc:transparent;--fo:var(--ink);--ft:var(--ink)}
+.era-name.fam-none i{background:transparent;box-shadow:inset 0 0 0 1.5px var(--muted)}
+.hero .stamp{margin:-22px 0 34px;font-size:15px;color:var(--muted)}
+.stamp a{color:inherit;text-underline-offset:3px}
+.about{max-width:1100px;margin:0 auto;padding:8px 20px 80px;scroll-margin-top:250px}
+.about h2{font-family:var(--display);font-weight:700;font-size:28px;margin:0 0 12px}
+.about p{max-width:68ch;margin:0 0 14px;font-size:16px}
+.about .stamp{color:var(--muted);font-size:15px}
+.era-name.fam-future i{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.lane.lab .bar{background:repeating-linear-gradient(135deg,var(--fc) 0 7px,color-mix(in srgb,var(--fc) 50%,var(--bg)) 7px 14px)}
+.swatch-lab i{background:repeating-linear-gradient(135deg,var(--f-multi) 0 4px,color-mix(in srgb,var(--f-multi) 45%,var(--bg)) 4px 8px)}
+.era.future{background:repeating-linear-gradient(135deg,var(--hatch) 0 8px,transparent 8px 16px);border-top:3px dashed var(--ink)}
+.era.future .era-num{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.strata li.stratum-future{background:repeating-linear-gradient(135deg,var(--hatch) 0 8px,transparent 8px 16px);color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.dot.reg,.fam-reg .dot{background:var(--bg);border:3px solid var(--ink)}
+.swatches .fam-reg i{background:transparent;border:2px solid var(--ink)}
+
+/* ---------- Ouverture ---------- */
+.hero{max-width:1100px;margin:0 auto;padding:64px 20px 36px}
+.lang{margin:0 0 20px;font-size:15px}
+.lang a{color:var(--muted);text-underline-offset:3px}
+.lang a:hover{color:var(--ink)}
+.hero h1{font-family:var(--display);font-weight:800;font-stretch:78%;font-size:clamp(46px,9vw,108px);line-height:.9;letter-spacing:-.02em;margin:0 0 22px}
+.lede{font-size:20px;max-width:58ch;margin:0 0 36px}
+.legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 36px;border-top:1px solid var(--line);padding-top:22px}
+.legend h2{font-family:var(--display);font-size:18px;font-weight:700;margin:0 0 6px}
+.legend p{margin:0;font-size:15px;color:var(--muted);max-width:42ch}
+.swatches{list-style:none;margin:0;padding:0;display:grid;gap:5px;font-size:15px}
+.mob-only{display:none}
+.swatches li{display:flex;align-items:center;gap:10px}
+.swatches i{width:26px;height:12px;border-radius:3px;background:var(--fc);flex:none}
+
+/* ---------- Bandeau de convergence ---------- */
+.dash{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--dash-bg);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.dash-inner{max-width:1100px;margin:0 auto;padding:14px 20px 10px;display:grid;grid-template-columns:200px minmax(0,1fr) auto;gap:6px 24px;align-items:start}
+.now{grid-row:1 / span 2}
+.year{font-family:var(--display);font-weight:800;font-stretch:78%;font-size:66px;line-height:.86;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.era-name{display:flex;align-items:center;gap:8px;margin-top:8px;font-weight:700;font-size:15px;line-height:1.2}
+.era-name i{width:10px;height:10px;border-radius:2px;background:var(--fc);flex:none;transition:background-color .5s ease}
+.strands{grid-column:2;grid-row:1;min-width:0;position:relative;padding-right:13px}
+.lane.merged::after{content:"";position:absolute;top:50%;right:-13px;width:13px;height:3px;margin-top:-1.5px;background:var(--f-multi)}
+.bus{position:absolute;right:0;top:0;width:3px;height:0;border-radius:2px;background:var(--f-multi);opacity:0;transition:top .4s ease,height .4s ease,opacity .4s ease}
+.lane{display:grid;grid-template-columns:56px minmax(0,1fr);align-items:center;gap:10px;margin-top:4px;transition:margin-top .4s ease;position:relative}
+.lane:first-child{margin-top:0}
+.lane-label{font-size:13px;font-weight:700;color:var(--muted);text-align:right;transition:color .4s ease}
+.bar{display:block;height:22px;line-height:22px;padding:0 10px;border-radius:5px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--fc,transparent);color:var(--fo,var(--muted));outline:1px dashed transparent;outline-offset:-1px;transition:background-color .5s ease,color .5s ease,border-radius .4s ease}
+.lane.fam-none .bar{outline-color:var(--line)}
+.lane.merged .lane-label{color:var(--ink)}
+.summary{grid-column:2;grid-row:2;margin:2px 0 0 66px;font-size:14px;color:var(--muted);min-height:1.4em}
+.switch{grid-column:3;grid-row:1;display:flex;align-items:center;gap:9px;font-size:14px;cursor:pointer;user-select:none;white-space:nowrap}
+.switch input{position:absolute;opacity:0;width:1px;height:1px}
+.track{width:36px;height:20px;border-radius:999px;background:var(--line);position:relative;transition:background-color .25s ease;flex:none}
+.track::after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:var(--surface);transition:transform .25s ease}
+.switch input:checked + .track{background:var(--ink)}
+.switch input:checked + .track::after{transform:translateX(16px)}
+.switch input:focus-visible + .track{outline:3px solid var(--f-dl);outline-offset:2px}
+.sides{max-width:1100px;margin:0 auto;padding:0 20px 6px;display:grid;grid-template-columns:1fr 56px 1fr;font-size:13px;color:var(--muted)}
+.sides span:first-child{text-align:right;padding-right:18px}
+.sides span:last-child{grid-column:3;padding-left:18px}
+
+/* ---------- Frise ---------- */
+.tl{max-width:1100px;margin:0 auto;padding:28px 20px 40px}
+.item{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr)}
+.item::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:var(--axis)}
+.item.lvl-major{padding:26px 0}
+.item.lvl-minor{padding:9px 0}
+.dot{grid-column:2;grid-row:1;justify-self:center;position:relative;z-index:1;width:10px;height:10px;margin-top:9px;border-radius:50%;background:var(--fc);box-shadow:0 0 0 4px var(--bg)}
+.lvl-major .dot{width:18px;height:18px;margin-top:12px}
+.item.side-R .body{grid-column:1;grid-row:1;justify-self:end;padding-right:20px;max-width:470px}
+.item.side-R .when{grid-column:3;grid-row:1;justify-self:start;padding-left:20px;text-align:left}
+.item.side-U .body{grid-column:3;grid-row:1;justify-self:start;padding-left:20px;max-width:470px}
+.item.side-U .when{grid-column:1;grid-row:1;justify-self:end;padding-right:20px;text-align:right}
+.yr{display:block;font-family:var(--display);font-weight:800;font-stretch:78%;font-size:46px;line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.lvl-minor .yr{font-size:21px;font-weight:700;color:var(--muted);margin-top:4px}
+.mo{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+.tag{display:none}
+.body h3{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.15;margin:6px 0 6px}
+.body p{margin:0;max-width:46ch}
+.lvl-minor .body h3{font-family:var(--text);font-size:16px;line-height:1.3;margin:5px 0 1px}
+.lvl-minor .body p{font-size:15px;color:var(--muted)}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0;padding:0}
+.item.side-U .chips{justify-content:flex-end}
+.chips li{font-size:13px;padding:1px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+body.simple .lvl-minor{display:none}
+.refs{display:flex;flex-wrap:wrap;gap:2px 14px;margin:10px 0 0;font-size:13px;line-height:1.5}
+.refs a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.refs a:hover,.refs a:focus-visible{color:var(--ink);text-decoration-color:currentColor}
+.era .refs{margin-top:18px}
+.winter .refs{justify-content:center;margin-top:6px}
+
+.era{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 30px;align-items:start;margin:40px 0;padding:32px 32px 30px;background:var(--surface);background:color-mix(in srgb,var(--fc) 14%,var(--bg));border-top:6px solid var(--fc);border-radius:4px 4px 10px 10px;scroll-margin-top:220px}
+.era-num{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:136px;line-height:.76;color:var(--ft)}
+.era h2{font-family:var(--display);font-weight:800;font-size:clamp(30px,4.4vw,50px);line-height:1;letter-spacing:-.015em;margin:0}
+.era-range{margin:8px 0 18px;color:var(--muted);font-size:16px}
+.era dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 32px;margin:0}
+.era dt{font-weight:700;font-size:14px;color:var(--ft);margin-bottom:2px}
+.era dd{margin:0;max-width:40ch}
+
+.winter{position:relative;display:flex;justify-content:center;padding:26px 20px;background:repeating-linear-gradient(135deg,var(--hatch) 0 6px,transparent 6px 12px)}
+.winter::before{content:"";position:absolute;top:0;bottom:0;left:50%;margin-left:-1px;border-left:2px dashed var(--axis)}
+.winter-box{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:12px 20px;text-align:center;max-width:440px}
+.winter h3{font-family:var(--display);font-weight:700;font-size:21px;margin:0}
+.winter .range{margin:0 0 4px;font-size:14px;color:var(--muted)}
+.winter p{margin:0;font-size:15px}
+
+/* ---------- Aujourd'hui ---------- */
+.today{padding:56px 0 24px;margin-top:40px;border-top:1px solid var(--line)}
+.today h2{font-family:var(--display);font-weight:800;font-stretch:85%;font-size:clamp(34px,5vw,58px);line-height:1;letter-spacing:-.015em;margin:0 0 14px}
+.today > p{max-width:60ch;margin:0 0 14px}
+.strata{list-style:none;margin:28px 0 30px;padding:0;border-radius:10px;overflow:hidden}
+.strata li{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:4px 20px;padding:13px 20px;background:var(--fc);color:var(--fo)}
+.strata li + li{box-shadow:inset 0 1px 0 rgba(0,0,0,.16)}
+.strata b{font-family:var(--display);font-weight:700;font-size:18px}
+
+@media (max-width:859px){
+  body{font-size:16px}
+  .hero{padding:40px 16px 28px}
+  .lede{font-size:18px}
+  .legend{grid-template-columns:1fr;gap:18px}
+  .legend .desk-only{display:none}
+  .legend .mob-only{display:block}
+  .dash-inner{grid-template-columns:minmax(0,1fr) auto;padding:10px 14px 8px;gap:6px 12px}
+  .now{grid-row:auto;display:flex;align-items:baseline;gap:10px;min-width:0}
+  .year{font-size:36px}
+  .era-name{margin-top:0;font-size:14px;min-width:0}
+  .era-name span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .switch{grid-column:2;grid-row:1;font-size:13px}
+  .strands{grid-column:1 / -1;grid-row:2}
+  .lane{grid-template-columns:46px minmax(0,1fr);gap:8px;margin-top:3px}
+  .lane-label{font-size:11.5px}
+  .bar{height:18px;line-height:18px;font-size:11.5px;padding:0 8px;border-radius:4px}
+  .summary{grid-column:1 / -1;grid-row:3;margin:0 0 0 54px;font-size:12px}
+  .sides{display:none}
+  .tl{padding:20px 14px 32px}
+  .item{grid-template-columns:34px minmax(0,1fr)}
+  .item::before{left:16px}
+  .dot{grid-column:1;grid-row:1}
+  .lvl-major .dot{margin-top:9px}
+  .item .when,.item.side-R .when,.item.side-U .when{grid-column:2;grid-row:1;justify-self:start;text-align:left;padding:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px}
+  .item .body,.item.side-R .body,.item.side-U .body{grid-column:2;grid-row:2;justify-self:start;padding:0;max-width:none}
+  .yr{display:inline;font-size:30px}
+  .lvl-minor .yr{font-size:17px;margin-top:0}
+  .mo{display:inline;margin:0}
+  .tag{display:inline-block;font-size:12px;padding:1px 9px;border-radius:999px;color:var(--ink);background:color-mix(in srgb,var(--ink) 9%,transparent)}
+  .when .chips,.item.side-U .when .chips{margin:0;justify-content:flex-start;gap:4px 6px}
+  .when .chips li{font-size:12px;padding:0 8px}
+  .body h3{font-size:21px;margin-top:4px}
+  .item.lvl-major{padding:18px 0}
+  .era{grid-template-columns:1fr;padding:22px 18px 20px;margin:30px 0;scroll-margin-top:170px}
+  .era-num{font-size:74px}
+  .era dl{grid-template-columns:1fr;gap:12px}
+  .winter{justify-content:flex-start;padding:20px 0 20px 34px}
+  .winter::before{left:16px}
+  .winter-box{text-align:left}
+  .winter .refs{justify-content:flex-start}
+  .strata li{grid-template-columns:1fr;padding:12px 16px}
+  .about{padding:8px 14px 60px;scroll-margin-top:220px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition:none !important}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <p class="lang"><a href="../" hreflang="fr" lang="fr">Version française</a></p>
+  <h1>What we’ve called “AI”</h1>
+  <p class="lede">Since 1956, the word has meant very different things, and its roots go back much further. Each stage was added on top of the previous ones without replacing them.</p>
+  <p class="stamp">As of October 5, 2026. <a href="#about">Method, sources and known biases</a> at the end of the page.</p>
+  <div class="legend">
+    <div>
+      <h2>The banner</h2>
+      <p>For each modality, the dominant technique in the year shown. When several modalities run through a single model, a line links them. Stripes mark what is still in the lab.</p>
+    </div>
+    <div>
+      <h2>The timeline</h2>
+      <p class="desk-only">Research on the left, products and uses on the right. Large dot: major milestone. Small dot: minor milestone. Colored band: a new era.</p>
+      <p class="mob-only">Each milestone shows whether it comes from research or from real-world use. Large dot: major milestone. Small dot: minor milestone. Colored band: a new era.</p>
+    </div>
+    <div>
+      <h2>The colors</h2>
+      <ul class="swatches">
+        <li class="fam-regles"><i></i>Hand-written rules</li>
+        <li class="fam-stat"><i></i>Statistical machine learning</li>
+        <li class="fam-dl"><i></i>Deep learning</li>
+        <li class="fam-tf"><i></i>Transformers and language models</li>
+        <li class="fam-gen"><i></i>Mainstream generation: chatbots, images, voice, video</li>
+        <li class="fam-multi"><i></i>One model for several modalities</li>
+        <li class="fam-reg"><i></i>Regulation and society</li>
+      </ul>
+    </div>
+  </div>
+  <p class="legend-note" style="margin:22px 0 0;font-size:15px;color:var(--muted);max-width:70ch">A dot’s color shows the technique used, which reveals the overlaps: in 1997, Deep Blue is still symbolic AI.</p>
+</section>
+
+<header class="dash" aria-label="Dominant technique per modality for the year shown">
+  <div class="dash-inner">
+    <div class="now">
+      <div class="year" id="year">1843</div>
+      <div class="era-name" id="eraName"><i></i><span>Before the word</span></div>
+    </div>
+    <div class="strands" id="strands"></div>
+    <p class="summary" id="summary"></p>
+    <label class="switch"><input type="checkbox" id="minorToggle" checked><span class="track" aria-hidden="true"></span><span>Minor milestones</span></label>
+  </div>
+  <div class="sides" aria-hidden="true"><span>Research</span><span>Products and uses</span></div>
+</header>
+
+<main class="tl" id="tl">
+  <section class="row today" data-y="2026.75">
+    <h2>Nothing was replaced</h2>
+    <p>Each stage stacks on top of the previous ones. Behind the word “AI” today sit all of these layers at once, each with its own uses.</p>
+    <ol class="strata">
+      <li class="stratum-future"><b>Physical AI and robotics</b><span>Under construction: robotaxis, humanoids, general-purpose arms.</span></li>
+      <li class="fam-multi"><b>Agentic AI</b><span>Acting: searching, coding, filling in forms, driving a browser.</span></li>
+      <li class="fam-gen"><b>Generative AI</b><span>Writing, summarizing, translating, generating images and voices.</span></li>
+      <li class="fam-tf"><b>Transformers</b><span>Embeddings, semantic search, text classification.</span></li>
+      <li class="fam-dl"><b>Deep learning</b><span>Image and speech recognition, OCR, vision for robots and cars.</span></li>
+      <li class="fam-stat"><b>Machine learning</b><span>Prediction, scoring, recommendations, anomaly detection.</span></li>
+      <li class="fam-regles"><b>Symbolic AI</b><span>Rule engines, planning, route calculation.</span></li>
+    </ol>
+    <p>On the modality side, text, image, sound, video and action now run through a single model. Robots are following, but remain in labs and pilots: Moravec’s paradox still holds, and walking and grasping remain harder than writing. That is probably the next stage.</p>
+    <p>Specialized models are often still more reliable and cheaper for a specific task: Whisper for transcription, a classic machine learning model for anomaly detection.</p>
+  </section>
+</main>
+
+<section class="about" id="about">
+  <h2>About this timeline</h2>
+  <p>This is one proposed reading of the history of AI, not an inventory. The milestones chosen are those that changed what the word “AI” refers to, plus failures, controversies and public decisions. The prologue gathers intellectual and technical roots, drawn in part from Wikipedia’s timeline of AI: not AI yet, but ideas it would later take up. Recent years are denser: the acceleration is real, but history has not yet separated true turning points from mere launches.</p>
+  <p>The banner is an interpretation. A year’s “dominant technique” is an editorial choice, and the line linking modalities means that models can handle them together, not that a single model does everything at every company. Stage 7 is a projection, not an observation.</p>
+  <p>Each milestone links first to Wikipedia, then to the official announcement or a press article, and to the scientific paper when there is one. Figures put forward by companies are flagged as such.</p>
+  <p>Known biases: American players and large private labs remain overrepresented, and the story told here is primarily a technical one. This timeline was made with the help of Claude, Anthropic’s model, which may have overweighted its own maker’s milestones; their number was reduced accordingly.</p>
+  <p class="stamp">As of October 5, 2026.</p>
+</section>
+
+<script>
+/* To edit the content: each TL entry is an era, a winter or a milestone.
+   y = decimal date (drives the banner), s = R (research) or U (use), l = 1 (major) or 0 (minor),
+   f = technique: regles (rules), stat, dl, tf, multi, reg (regulation). */
+const TL = [
+ {y:-350, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Syllogism"]], yr:"−350", mo:"circa", s:"R", l:0, f:"regles", m:[], t:"Aristotle and the syllogism", p:"Aristotle sets out rules for mechanically drawing a conclusion from premises. Twenty-three centuries later, symbolic AI takes up this idea of reasoning that can be formalized."},
+ {y:850, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Al-Khwarizmi"]], yr:"850", mo:"circa", s:"R", l:0, f:"regles", m:[], t:"Algorithms and automata in Baghdad", p:"The mathematician al-Khwarizmi, whose name gave us the word “algorithm”, writes down step-by-step methods of calculation. The Banū Mūsā brothers describe an automatic flute whose tune is programmed on a cylinder."},
+ {y:1642, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Pascal%27s_calculator"]], yr:"1642", s:"R", l:0, f:"regles", m:[], t:"The Pascaline", p:"The young Blaise Pascal builds a calculating machine to help his father, a tax official. Calculation becomes a mechanical operation."},
+ {y:1676, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Calculus_ratiocinator"]], yr:"1676", s:"R", l:1, f:"dl", m:[], t:"Leibniz: calculating in order to reason", p:"Leibniz dreams of a language in which disagreements would be settled by calculation. He also formulates the chain rule, which today is used to train every neural network."},
+ {y:1763, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Bayes%27_theorem"], ["Paper", "https://doi.org/10.1098/rstl.1763.0053"]], yr:"1763", s:"R", l:1, f:"stat", m:[], t:"Bayes’ theorem", p:"Published after Thomas Bayes’ death, his essay shows how to revise a belief as observations come in. It sits at the heart of spam filters and of all probabilistic AI."},
+ {y:1770, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Mechanical_Turk"]], yr:"1770", s:"U", l:1, f:"reg", m:[], t:"The Mechanical Turk", p:"A chess-playing automaton fascinates the courts of Europe for decades. A human player was hidden inside. In 2005 Amazon borrows the name for its micro-work platform, later used to label the images of ImageNet."},
+ {y:1805, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Least_squares"]], yr:"1805", s:"R", l:0, f:"stat", m:[], t:"Least squares", p:"Adrien-Marie Legendre publishes a method, already used by Gauss, for fitting a curve to astronomical observations. Finding the parameters that best fit the data is already the core idea of machine learning."},
+ {y:1818, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Frankenstein"]], yr:"1818", s:"U", l:0, f:"reg", m:[], t:"Frankenstein", p:"Mary Shelley tells of a manufactured creature that escapes its maker. The fear of losing control of what we create still runs through debates about AI."},
+ {y:1843, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Ada_Lovelace"], ["Original text", "https://www.fourmilab.ch/babbage/sketch.html"]], yr:"1843", s:"R", l:0, f:"regles", m:[], t:"Ada Lovelace and the Analytical Engine", p:"In her notes on Babbage’s machine, Ada Lovelace imagines it handling more than numbers, even composing music, while insisting it can originate nothing by itself. Turing answers her in 1950."},
+ {y:1854, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Boolean_algebra"]], yr:"1854", s:"R", l:0, f:"regles", m:[], t:"Boole puts thought into equations", p:"George Boole publishes <i>The Laws of Thought</i>, reducing logic to an algebra of true and false. It becomes the language of electronic circuits and computers."},
+ {y:1914, r:[["Wikipedia", "https://en.wikipedia.org/wiki/El_Ajedrecista"]], yr:"1914", s:"R", l:0, f:"regles", m:["Robots"], t:"El Ajedrecista", p:"Spanish engineer Leonardo Torres Quevedo builds an automaton that really plays a chess endgame, with nobody hidden inside. A century and a half after the Turk, the machine no longer cheats."},
+ {y:1920, r:[["Wikipedia", "https://en.wikipedia.org/wiki/R.U.R."]], yr:"1920", s:"U", l:0, f:"reg", m:["Robots"], t:"The word “robot”", p:"In his play <i>R.U.R.</i>, Czech writer Karel Čapek popularizes the word “robot”, coined by his brother Josef from <i>robota</i>, meaning forced labor. His artificial workers end up rebelling."},
+ {y:1936, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Turing_machine"], ["Paper", "https://doi.org/10.1112/plms/s2-42.1.230"]], yr:"1936", s:"R", l:1, f:"regles", m:[], t:"The Turing machine", p:"Alan Turing imagines an abstract machine able to carry out any calculation described step by step. It is the theoretical model of every computer, and it also shows their limits."},
+ {y:1943, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Artificial_neuron"], ["Paper", "https://doi.org/10.1007/BF02478259"]], yr:"1943", s:"R", l:1, f:"dl", m:[], t:"The formal neuron", p:"Warren McCulloch and Walter Pitts describe an artificial neuron in logical terms. The whole history of neural networks starts here."},
+ {y:1949, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Hebbian_theory"]], yr:"1949", s:"R", l:0, f:"dl", m:[], t:"Hebb’s rule", p:"Psychologist Donald Hebb proposes that connections between neurons strengthen when they fire together. A first idea of what learning in a network could look like."},
+ {era:1, y:1950, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Symbolic_artificial_intelligence"]], f:"regles", name:"Symbolic AI", range:"1950 – 1990", was:"Rules and reasoning written by hand by experts.", still:"Rule engines, planning, route calculation, solvers."},
+ {y:1950, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Turing_test"], ["Paper", "https://doi.org/10.1093/mind/LIX.236.433"]], yr:"1950", s:"R", l:1, f:"regles", m:["Text"], t:"The Turing test", p:"Alan Turing asks whether a machine can think, and proposes a test: mistaking it for a human in a written conversation."},
+ {y:1952, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Timeline_of_speech_and_voice_recognition"]], yr:"1952", s:"R", l:0, f:"regles", m:["Sound"], t:"Audrey", p:"At Bell Labs, a machine recognizes spoken digits… from a single voice."},
+ {y:1956, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Dartmouth_workshop"], ["Paper", "https://doi.org/10.1609/aimag.v27i4.1904"]], yr:"1956", s:"R", l:1, f:"regles", m:[], t:"The word is born", p:"At the Dartmouth conference, John McCarthy and a handful of researchers adopt the term “artificial intelligence.” They hope for major advances in a single summer."},
+ {y:1958, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Perceptron"], ["Paper", "https://doi.org/10.1037/h0042519"]], yr:"1958", s:"R", l:1, f:"dl", m:["Image"], t:"The perceptron", p:"Frank Rosenblatt builds an artificial neuron that learns to recognize simple shapes. It is the direct ancestor of today’s neural networks."},
+ {y:1962, r:[["Wikipedia", "https://en.wikipedia.org/wiki/IBM_Shoebox"], ["IBM", "https://www.ibm.com/history/voice-recognition"]], yr:"1962", s:"U", l:0, f:"regles", m:["Sound"], t:"IBM Shoebox", p:"Shown at the Seattle World’s Fair, it recognizes sixteen words and does arithmetic by voice."},
+ {y:1966, r:[["Wikipedia", "https://en.wikipedia.org/wiki/ELIZA"], ["Paper", "https://doi.org/10.1145/365153.365168"]], yr:"1966", s:"R", l:1, f:"regles", m:["Text"], t:"ELIZA, the first chatbot", p:"A few rephrasing rules are enough to imitate a psychotherapist. Users already get attached to it: people have talked about the “ELIZA effect” ever since."},
+ {y:1966.5, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Shakey_the_robot"]], yr:"1966", s:"R", l:0, f:"regles", m:["Robots"], t:"Shakey", p:"The first mobile robot to reason about its own actions to plan its moves."},
+ {y:1969, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Perceptrons_(book)"]], yr:"1969", s:"R", l:0, f:"dl", m:[], t:"The book “Perceptrons”", p:"Minsky and Papert show the limits of the perceptron. Neural networks are set aside for a long time."},
+ {y:1972, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Karen_Sp%C3%A4rck_Jones"], ["Paper", "https://doi.org/10.1108/eb026526"]], yr:"1972", s:"R", l:0, f:"stat", m:["Text"], t:"Karen Spärck Jones weighs words", p:"She proposes giving more weight to the rare words in a query. This statistical principle still powers search engines."},
+ {y:1973, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Humanoid_robot"], ["Waseda University", "https://www.humanoid.waseda.ac.jp/booklet/kato_2.html"]], yr:"1973", s:"R", l:0, f:"regles", m:["Robots"], t:"WABOT-1, the first humanoid", p:"At Waseda University, a human-sized robot walks slowly, grasps objects and converses in Japanese."},
+ {winter:true, y:1974, r:[["Wikipedia", "https://en.wikipedia.org/wiki/AI_winter"]], t:"First AI winter", range:"1974 – 1980", p:"Promises go unfulfilled and funding collapses."},
+ {y:1976, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Reading_machine"], ["MIT", "https://lemelson.mit.edu/resources/raymond-kurzweil"]], yr:"1976", s:"U", l:1, f:"regles", m:["Image","Sound"], t:"Kurzweil’s reading machine", p:"It reads printed books aloud for blind people: character recognition and speech synthesis together, long before anyone talked about multimodality."},
+ {y:1980, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Xcon"]], yr:"1980", s:"U", l:1, f:"regles", m:[], t:"Expert systems in business", p:"At DEC, XCON configures computer orders using thousands of rules. AI becomes a market."},
+ {y:1982.3, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Fifth_Generation_Computer_Systems"]], yr:"1982", s:"R", l:0, f:"regles", m:[], t:"Japan’s Fifth Generation", p:"Japan launches a vast public program for logic-based computers. The United States and Europe respond with plans of their own. The results disappoint."},
+ {y:1984, r:[["Wikipedia", "https://en.wikipedia.org/wiki/DECtalk"]], yr:"1984", s:"U", l:0, f:"regles", m:["Sound"], t:"DECtalk", p:"A synthetic voice built from rules, from the same family as Stephen Hawking’s."},
+ {y:1986, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Backpropagation"], ["Paper", "https://doi.org/10.1038/323533a0"]], yr:"1986", s:"R", l:1, f:"dl", m:[], t:"Backpropagation", p:"Rumelhart, Hinton and Williams popularize the method for training multi-layer networks. It is still used to train every model today."},
+ {winter:true, y:1987, r:[["Wikipedia", "https://en.wikipedia.org/wiki/AI_winter"]], t:"Second AI winter", range:"1987 – 1993", p:"Expert systems cost too much to maintain, and the market for specialized machines collapses."},
+ {y:1988, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Moravec%27s_paradox"]], yr:"1988", s:"R", l:1, f:"regles", m:["Robots"], t:"Moravec’s paradox", p:"Hans Moravec observes that it is fairly easy to make a machine shine on intelligence tests or at checkers, but very hard to give it the perception and mobility of a one-year-old. The paradox still explains why robots progress more slowly than chatbots."},
+ {y:1989, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Navlab"], ["Paper", "https://proceedings.neurips.cc/paper/1988/hash/812b4ba287f5ee0bc9d43bbf5bbe87fb-Abstract.html"]], yr:"1989", s:"R", l:0, f:"dl", m:["Robots"], t:"ALVINN, a neural network at the wheel", p:"At Carnegie Mellon, a small neural network learns to steer a van by watching a human drive."},
+ {era:2, y:1990, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Machine_learning"]], f:"stat", name:"Machine learning", range:"1990 – 2012", was:"Rules learned automatically from examples.", still:"Prediction, scoring, recommendations, fraud and anomaly detection."},
+ {y:1992, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Speech_recognition"], ["Paper 1", "https://www.sciencedirect.com/science/article/abs/pii/S0167639397000356"], ["Paper 2", "https://web.ece.ucsb.edu/Faculty/Rabiner/ece259/Reprints/354_LALI-ASRHistory-final-10-8.pdf"]], yr:"1992", s:"U", l:0, f:"stat", m:["Sound"], t:"Speech recognition takes the switchboard", p:"AT&amp;T hands collect calls over to a machine: it understands only a handful of words, yet replaces part of its operator workforce and eventually handles over a billion calls a year."},
+ {y:1994.8, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Eureka_Prometheus_Project"], ["Politico", "https://www.politico.eu/article/delf-driving-car-born-1986-ernst-dickmanns-mercedes/"]], yr:"1994", mo:"October", s:"R", l:1, f:"stat", m:["Robots","Image"], t:"Self-driving cars near Paris", p:"To close Europe’s Prometheus program, two camera-equipped Mercedes cover more than 1,000 km on a Paris-area highway in heavy traffic, at up to 130 km/h, with a safety driver on board."},
+ {y:1997.35, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov"], ["Paper", "https://doi.org/10.1016/S0004-3702(01)00129-1"]], yr:"1997", mo:"May", s:"U", l:1, f:"regles", m:[], t:"Deep Blue beats Kasparov", p:"A victory of brute force: 200 million positions computed per second, with no learning at all. The eras overlap."},
+ {y:1997.45, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Dragon_NaturallySpeaking"]], yr:"1997", mo:"June", s:"U", l:1, f:"stat", m:["Sound"], t:"Dragon NaturallySpeaking", p:"The first continuous voice dictation for the general public, powered by statistical models."},
+ {y:1997.9, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Long_short-term_memory"], ["Paper", "https://doi.org/10.1162/neco.1997.9.8.1735"]], yr:"1997", s:"R", l:0, f:"dl", m:["Text"], t:"LSTM", p:"A network with a short-term memory. It will dominate translation and speech twenty years later."},
+ {y:1998, r:[["Wikipedia", "https://en.wikipedia.org/wiki/LeNet"], ["Paper", "https://doi.org/10.1109/5.726791"]], yr:"1998", s:"U", l:1, f:"dl", m:["Image"], t:"LeNet reads checks", p:"Yann LeCun’s neural network reads handwritten amounts on a share of US checks."},
+ {y:2000.85, r:[["Wikipedia", "https://en.wikipedia.org/wiki/ASIMO"]], yr:"2000", s:"U", l:1, f:"regles", m:["Robots"], t:"ASIMO walks", p:"Honda unveils a humanoid that walks and climbs stairs, and becomes the face of robotics. Its gait relies on programmed physics models, not on learning."},
+ {y:2002, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Naive_Bayes_spam_filtering"], ["Paul Graham", "https://paulgraham.com/spam.html"]], yr:"2002", s:"U", l:0, f:"stat", m:["Text"], t:"Spam filters learn", p:"Bayesian filters learn from the emails you mark as junk. You have been using AI for more than twenty years."},
+ {y:2002.7, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Roomba"]], yr:"2002", s:"U", l:0, f:"regles", m:["Robots"], t:"Roomba", p:"The first mass-market home robot vacuums by following a few simple behaviors, without any map of the room."},
+ {y:2005.77, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Stanley_(vehicle)"], ["Paper", "https://doi.org/10.1002/rob.20147"]], yr:"2005", mo:"October", s:"R", l:1, f:"stat", m:["Robots"], t:"Stanley wins the DARPA Grand Challenge", p:"In 2004, no vehicle finished the desert race. A year later, Stanford’s car covers 212 km on its own, thanks to machine learning and probabilistic reasoning."},
+ {y:2006.3, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Google_Translate"]], yr:"2006", mo:"April", s:"U", l:0, f:"stat", m:["Text"], t:"Google Translate", p:"Launched with statistical translation, learned from millions of already-translated texts."},
+ {y:2006.8, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Netflix_Prize"]], yr:"2006", mo:"October", s:"U", l:1, f:"stat", m:[], t:"The Netflix Prize", p:"A million dollars to whoever improves movie recommendations by 10%. Machine learning becomes a worldwide competition."},
+ {y:2007.45, r:[["Wikipedia", "https://en.wikipedia.org/wiki/CUDA"]], yr:"2007", mo:"June", s:"U", l:1, f:"dl", m:[], t:"CUDA: graphics cards take up computing", p:"NVIDIA lets developers program its graphics cards for general computing. Five years later, deep learning takes off on these chips, which become the most coveted resource in the field."},
+ {y:2009, r:[["Wikipedia", "https://en.wikipedia.org/wiki/ImageNet"], ["Paper", "https://doi.org/10.1109/CVPR.2009.5206848"]], yr:"2009", s:"R", l:0, f:"dl", m:["Image"], t:"ImageNet", p:"Fei-Fei Li gathers millions of hand-labeled images. Without this mass of data, there would be no deep learning."},
+ {y:2011.1, r:[["Wikipedia", "https://en.wikipedia.org/wiki/IBM_Watson"]], yr:"2011", mo:"February", s:"U", l:0, f:"stat", m:["Text"], t:"Watson wins Jeopardy!", p:"IBM beats the best champions of the American TV quiz show."},
+ {y:2011.8, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Siri"]], yr:"2011", mo:"October", s:"U", l:1, f:"stat", m:["Sound"], t:"Siri", p:"The voice assistant lands in your pocket with the iPhone 4S."},
+ {era:3, y:2012, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Deep_learning"]], f:"dl", name:"Deep learning", range:"2012 – 2017", was:"Deep neural networks, trained on graphics cards with huge volumes of data.", still:"Image and speech recognition, OCR, industrial quality control."},
+ {y:2012.7, r:[["Wikipedia", "https://en.wikipedia.org/wiki/AlexNet"], ["Paper", "https://doi.org/10.1145/3065386"]], yr:"2012", mo:"September", s:"R", l:1, f:"dl", m:["Image"], t:"AlexNet", p:"A deep network trained on two graphics cards crushes the ImageNet competition. This is the break that reignites the whole field."},
+ {y:2012.85, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Speech_recognition"], ["Paper", "https://doi.org/10.1109/MSP.2012.2205597"]], yr:"2012", s:"R", l:0, f:"dl", m:["Sound"], t:"Speech moves to deep learning", p:"Google, Microsoft and IBM replace their statistical models: recognition errors drop."},
+ {y:2013, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Word2vec"], ["Paper", "https://arxiv.org/abs/1301.3781"]], yr:"2013", s:"R", l:1, f:"dl", m:["Text"], t:"word2vec and embeddings", p:"Each word becomes a list of numbers, and meaning becomes geometry: king − man + woman ≈ queen."},
+ {y:2014.45, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Generative_adversarial_network"], ["Paper", "https://arxiv.org/abs/1406.2661"]], yr:"2014", s:"R", l:1, f:"dl", m:["Image"], t:"GANs", p:"Two networks compete: one makes images, the other must spot the fakes. The first generated images appear."},
+ {y:2014.7, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Attention_(machine_learning)"], ["Paper", "https://arxiv.org/abs/1409.0473"]], yr:"2014", s:"R", l:0, f:"dl", m:["Text"], t:"The attention mechanism", p:"To translate, the model learns which words to focus on. Remember that word, it comes back in 2017."},
+ {y:2014.85, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Amazon_Echo"]], yr:"2014", s:"U", l:0, f:"dl", m:["Sound"], t:"Amazon Echo", p:"Alexa enters living rooms."},
+ {y:2015.78, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Tesla_Autopilot"]], yr:"2015", mo:"October", s:"U", l:0, f:"dl", m:["Robots"], t:"Tesla Autopilot", p:"A software update gives tens of thousands of cars highway driving assistance. The driver must stay alert, and fully autonomous driving, promised in 2016 for the following year, is still awaited."},
+ {y:2015.9, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Residual_neural_network"], ["Paper", "https://arxiv.org/abs/1512.03385"]], yr:"2015", s:"R", l:0, f:"dl", m:["Image"], t:"ResNet", p:"On ImageNet, the machine beats the human reference score."},
+ {y:2016.2, r:[["Wikipedia", "https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol"], ["Paper", "https://doi.org/10.1038/nature16961"]], yr:"2016", mo:"March", s:"U", l:1, f:"dl", m:["Action"], t:"AlphaGo beats Lee Sedol", p:"Go is too vast for brute force. DeepMind combines deep learning and reinforcement learning, and its move 37 stuns every expert."},
+ {y:2016.22, r:[["Paper", "https://arxiv.org/abs/1603.02199"]], yr:"2016", mo:"March", s:"R", l:1, f:"dl", m:["Robots"], t:"Robot arms learn to grasp", p:"At Google, up to fourteen arms make 800,000 grasp attempts and learn through deep learning to pick up objects they have never seen."},
+ {y:2016.23, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Tay_(chatbot)"]], yr:"2016", mo:"March", s:"U", l:0, f:"reg", m:["Text"], t:"Tay goes off the rails in a day", p:"Microsoft launches a chatbot on Twitter that learns from conversations. Users get it to spout racist remarks, and Microsoft pulls it within 24 hours."},
+ {y:2016.4, r:[["Wikipedia", "https://en.wikipedia.org/wiki/COMPAS_(software)"], ["ProPublica", "https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing"]], yr:"2016", mo:"May", s:"U", l:1, f:"reg", m:[], t:"Algorithms that discriminate", p:"A ProPublica investigation shows that a US software tool for assessing reoffending risk errs differently for Black and white defendants."},
+ {y:2016.7, r:[["Wikipedia", "https://en.wikipedia.org/wiki/WaveNet"], ["Google DeepMind", "https://deepmind.google/discover/blog/wavenet-a-generative-model-for-raw-audio/"], ["Paper", "https://arxiv.org/abs/1609.03499"]], yr:"2016", mo:"September", s:"R", l:1, f:"dl", m:["Sound"], t:"WaveNet", p:"DeepMind generates sound sample by sample: the first truly natural synthetic voices."},
+ {y:2016.75, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Google_Neural_Machine_Translation"], ["Paper", "https://arxiv.org/abs/1609.08144"]], yr:"2016", mo:"fall", s:"U", l:0, f:"dl", m:["Text"], t:"Google Translate goes neural", p:"Translation quality jumps overnight."},
+ {era:4, y:2017.45, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)"]], f:"tf", name:"Transformers and language models", range:"2017 – 2022", was:"Models pre-trained on huge text corpora, then adapted to each task.", still:"Embeddings, semantic search, text classification, translation."},
+ {y:2017.45, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Attention_Is_All_You_Need"], ["Paper", "https://arxiv.org/abs/1706.03762"]], yr:"2017", mo:"June", s:"R", l:1, f:"tf", m:["Text"], t:"“Attention Is All You Need”", p:"Google introduces the Transformer, which processes the whole sentence at once instead of reading it word by word. Every current LLM descends from it."},
+ {y:2017.55, r:[["DigiChina (Stanford)", "https://digichina.stanford.edu/work/full-translation-chinas-new-generation-artificial-intelligence-development-plan-2017/"]], yr:"2017", mo:"July", s:"U", l:0, f:"reg", m:[], t:"China aims for first place", p:"Beijing publishes a plan to make the country the world leader in AI by 2030. Rivalry with the United States now shapes the field."},
+ {y:2017.9, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Deepfake"]], yr:"2017", mo:"late in the year", s:"U", l:0, f:"dl", m:["Image","Video"], t:"Deepfakes", p:"Face-swapped videos circulate on Reddit. Generating also becomes a matter of trust."},
+ {y:2018.1, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Joy_Buolamwini"], ["Paper", "https://proceedings.mlr.press/v81/buolamwini18a.html"]], yr:"2018", mo:"February", s:"R", l:1, f:"reg", m:["Image"], t:"Gender Shades", p:"Joy Buolamwini and Timnit Gebru show that commercial facial analysis systems err far more often on darker-skinned women than on lighter-skinned men."},
+ {y:2018.22, r:[["Wikipedia", "https://en.wikipedia.org/wiki/World_model_(artificial_intelligence)"], ["Interactive demo", "https://worldmodels.github.io/"], ["Paper", "https://arxiv.org/abs/1803.10122"]], yr:"2018", mo:"March", s:"R", l:1, f:"dl", m:[], t:"World models", p:"David Ha and Jürgen Schmidhuber give the idea its name: an agent learns a compressed model of its environment, then trains inside this “dream” before acting in the real game."},
+ {y:2018.35, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Google_Duplex"], ["Google", "https://ai.googleblog.com/2018/05/duplex-ai-system-for-natural-conversation.html"]], yr:"2018", mo:"May", s:"U", l:0, f:"dl", m:["Sound"], t:"AI makes the call", p:"Google Duplex calls a hair salon and a restaurant to book, with hesitations so natural the person on the line never guesses it’s a machine. After the backlash, Google promises the assistant will identify itself."},
+ {y:2018.5, r:[["Wikipedia", "https://en.wikipedia.org/wiki/BERT_(language_model)"], ["Google", "https://blog.google/products/search/search-language-understanding-bert/"], ["Paper", "https://arxiv.org/abs/1810.04805"]], yr:"2018", s:"R", l:1, f:"tf", m:["Text"], t:"GPT and BERT", p:"OpenAI and Google pre-train Transformers on billions of words. By 2019, BERT improves Google Search."},
+ {y:2019.1, r:[["Wikipedia", "https://en.wikipedia.org/wiki/GPT-2"], ["OpenAI", "https://openai.com/index/better-language-models/"]], yr:"2019", s:"R", l:0, f:"tf", m:["Text"], t:"GPT-2", p:"OpenAI releases it in stages, fearing it could be used to produce misinformation."},
+ {y:2019.15, r:[["Wikipedia", "https://en.wikipedia.org/wiki/StyleGAN"], ["Paper", "https://arxiv.org/abs/1812.04948"]], yr:"2019", s:"U", l:0, f:"dl", m:["Image"], t:"This Person Does Not Exist", p:"On every visit, a website shows the portrait of a person who does not exist."},
+ {y:2019.79, r:[["OpenAI", "https://openai.com/index/solving-rubiks-cube/"], ["Paper", "https://arxiv.org/abs/1910.07113"]], yr:"2019", mo:"October", s:"R", l:1, f:"dl", m:["Robots"], t:"A robot hand solves the Rubik’s Cube", p:"OpenAI trains a robotic hand entirely in simulation, across thousands of variations of the world, then transfers it to reality: dexterity can be learned too."},
+ {y:2020.05, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Neural_scaling_law"], ["Paper", "https://arxiv.org/abs/2001.08361"]], yr:"2020", mo:"January", s:"R", l:0, f:"tf", m:["Text"], t:"Scaling laws", p:"OpenAI shows that performance improves predictably with model size, data and compute. The race for bigger models and data centers can begin."},
+ {y:2020.4, r:[["Wikipedia", "https://en.wikipedia.org/wiki/GPT-3"], ["Paper", "https://arxiv.org/abs/2005.14165"]], yr:"2020", mo:"May", s:"R", l:1, f:"tf", m:["Text"], t:"GPT-3", p:"175 billion parameters. With no task-specific training, it follows instructions from a few examples given in the prompt."},
+ {y:2020.77, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Waymo"], ["Waymo", "https://waymo.com/blog/2020/10/waymo-is-opening-its-fully-driverless-service-in-phoenix/"]], yr:"2020", mo:"October", s:"U", l:1, f:"dl", m:["Robots"], t:"Robotaxis with nobody at the wheel", p:"In Phoenix, Waymo becomes the first company to open a taxi service to the public with no safety driver on board."},
+ {y:2020.8, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Vision_transformer"], ["Paper", "https://arxiv.org/abs/2010.11929"]], yr:"2020", mo:"October", s:"R", l:1, f:"tf", m:["Image"], t:"Vision Transformer", p:"An image cut into small squares treated like words: text and image start speaking the same language."},
+ {y:2020.9, r:[["Wikipedia", "https://en.wikipedia.org/wiki/AlphaFold"], ["Paper", "https://doi.org/10.1038/s41586-021-03819-2"]], yr:"2020", mo:"November", s:"R", l:1, f:"dl", m:[], t:"AlphaFold 2", p:"Predicting protein shapes, a fifty-year-old problem, takes a decisive leap. Nobel Prize in Chemistry in 2024, and it is not generative AI."},
+ {y:2021.01, r:[["Wikipedia", "https://en.wikipedia.org/wiki/DALL-E"], ["OpenAI", "https://openai.com/index/clip/"], ["Paper", "https://arxiv.org/abs/2103.00020"]], yr:"2021", mo:"January", s:"R", l:1, f:"tf", m:["Text","Image"], t:"CLIP and DALL-E", p:"OpenAI links text and image in a shared space: describe an image, and the model draws it."},
+ {y:2021.5, r:[["Wikipedia", "https://en.wikipedia.org/wiki/GitHub_Copilot"], ["Paper", "https://arxiv.org/abs/2107.03374"]], yr:"2021", mo:"June", s:"U", l:1, f:"tf", m:["Text"], t:"GitHub Copilot", p:"A language model completes code right inside the editor. The first coding assistant at scale."},
+ {y:2022.05, r:[["Wikipedia", "https://en.wikipedia.org/wiki/IBM_Watson"]], yr:"2022", mo:"January", s:"U", l:0, f:"stat", m:[], t:"Watson Health sold off", p:"After promising to transform cancer care, IBM sells its health division. A spectacular demo does not necessarily make a useful product."},
+ {y:2022.2, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Reinforcement_learning_from_human_feedback"], ["Paper", "https://arxiv.org/abs/2203.02155"]], yr:"2022", mo:"March", s:"R", l:1, f:"tf", m:["Text"], t:"RLHF: humans correct the model", p:"With InstructGPT, OpenAI fine-tunes a language model using human judgments of its answers. This is what turns a text predictor into a usable assistant, a few months before ChatGPT."},
+ {era:5, y:2022.3, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Generative_artificial_intelligence"]], f:"gen", name:"Generative AI goes mainstream", range:"2022 – 2023", was:"A tool everyone uses to generate text, images or voice.", still:"Writing, summarizing, translating, illustrating."},
+ {y:2022.3, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Stable_Diffusion"], ["OpenAI", "https://openai.com/index/dall-e-2/"], ["Paper", "https://arxiv.org/abs/2112.10752"]], yr:"2022", mo:"April to August", s:"U", l:1, f:"gen", m:["Image"], t:"Images lead the way", p:"DALL-E 2, then Midjourney, then open-source Stable Diffusion: the generative wave starts with images, a few months before ChatGPT."},
+ {y:2022.53, r:[["Wikipedia", "https://en.wikipedia.org/wiki/BLOOM_(language_model)"], ["Paper", "https://arxiv.org/abs/2211.05100"]], yr:"2022", mo:"July", s:"R", l:0, f:"tf", m:["Text"], t:"BLOOM, an open LLM trained in France", p:"More than 1,000 researchers brought together by Hugging Face train a 176-billion-parameter multilingual model on France’s public Jean Zay supercomputer, open to all."},
+ {y:2022.72, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Whisper_(speech_recognition_system)"], ["OpenAI", "https://openai.com/index/whisper/"], ["Paper", "https://arxiv.org/abs/2212.04356"]], yr:"2022", mo:"September", s:"R", l:1, f:"tf", m:["Sound"], t:"Whisper", p:"OpenAI open-sources a highly reliable multilingual transcription model that runs on a laptop."},
+ {y:2022.75, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Text-to-video_model"], ["Paper", "https://arxiv.org/abs/2209.14792"]], yr:"2022", mo:"fall", s:"R", l:0, f:"gen", m:["Video"], t:"First generated videos", p:"Meta and Google show a few seconds of video generated from text."},
+ {y:2022.91, r:[["Wikipedia", "https://en.wikipedia.org/wiki/ChatGPT"], ["OpenAI", "https://openai.com/index/chatgpt/"], ["Reuters", "https://www.reuters.com/technology/chatgpt-sets-record-fastest-growing-user-base-analyst-note-2023-02-01/"]], yr:"2022", mo:"November 30", s:"U", l:1, f:"gen", m:["Text"], t:"ChatGPT", p:"OpenAI opens a chatbot to the public: about 100 million users in two months, by estimates. “AI” becomes a synonym for chatbot."},
+ {y:2023.05, r:[["Wikipedia", "https://en.wikipedia.org/wiki/ElevenLabs"]], yr:"2023", mo:"January", s:"U", l:0, f:"gen", m:["Sound"], t:"Voice cloning", p:"ElevenLabs reproduces a voice from a short recording. CEO fraud scams get a new tool."},
+ {y:2023.15, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Llama_(language_model)"], ["Meta", "https://ai.meta.com/blog/large-language-model-llama-meta-ai/"], ["Paper", "https://arxiv.org/abs/2302.13971"]], yr:"2023", mo:"February", s:"R", l:1, f:"tf", m:["Text"], t:"LLaMA and open models", p:"Meta shares its models with researchers, they leak within days, and LLMs soon run on an ordinary laptop. This is what makes a local demo possible."},
+ {y:2023.2, r:[["Wikipedia", "https://en.wikipedia.org/wiki/GPT-4"], ["Anthropic", "https://www.anthropic.com/news/introducing-claude"], ["Paper", "https://arxiv.org/abs/2303.08774"]], yr:"2023", mo:"March 14", s:"U", l:1, f:"gen", m:["Text"], t:"GPT-4 and Claude", p:"OpenAI and Anthropic launch their models on the same day. The race for frontier models is on."},
+ {era:6, y:2023.45, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Intelligent_agent"]], f:"multi", name:"Agentic AI", range:"2023 – today", was:"A model that sees, listens, reasons, uses tools and acts.", still:null},
+ {y:2023.45, r:[["OpenAI", "https://openai.com/index/function-calling-and-other-api-updates/"], ["Paper", "https://arxiv.org/abs/2302.04761"]], yr:"2023", mo:"June", s:"R", l:1, f:"tf", m:["Action"], t:"Function calling", p:"The model can ask to call a function: search the web, query a database, send an email. It no longer just answers, it delegates."},
+ {y:2023.57, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Vision%E2%80%93language%E2%80%93action_model"], ["Google DeepMind", "https://deepmind.google/discover/blog/rt-2-new-model-translates-vision-and-language-into-action/"], ["Paper", "https://arxiv.org/abs/2307.15818"]], yr:"2023", mo:"July", s:"R", l:1, f:"tf", m:["Robots","Image","Text"], t:"RT-2, the robot that understands instructions", p:"Google DeepMind connects a vision-language model to a robot arm: movements become tokens, like words, and the robot carries out instructions it was never trained on."},
+ {y:2023.73, r:[["Wikipedia", "https://en.wikipedia.org/wiki/GPT-4"], ["OpenAI", "https://openai.com/index/gpt-4v-system-card/"]], yr:"2023", mo:"September", s:"U", l:1, f:"multi", m:["Text","Image"], t:"The LLM can see", p:"With GPT-4V, you show it a photo, a diagram or a screenshot, and the model describes it. Images join the same model as text."},
+ {y:2023.75, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Mistral_AI"], ["Paper", "https://arxiv.org/abs/2310.06825"]], yr:"2023", mo:"September", s:"U", l:1, f:"tf", m:["Text"], t:"Mistral 7B", p:"Five months after its founding, Paris start-up Mistral AI releases an open model that rivals models nearly twice its size. Europe joins the race."},
+ {y:2023.84, r:[["Wikipedia", "https://en.wikipedia.org/wiki/AI_Safety_Summit"]], yr:"2023", mo:"November", s:"U", l:0, f:"reg", m:[], t:"The first AI Safety Summit", p:"At Bletchley Park, 28 countries and the European Union sign a joint declaration on the risks of the most advanced models."},
+ {y:2023.93, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Gemini_(language_model)"], ["Google", "https://blog.google/technology/ai/google-gemini-ai/"], ["Paper", "https://arxiv.org/abs/2312.11805"]], yr:"2023", mo:"December", s:"R", l:0, f:"multi", m:["Text","Image","Sound"], t:"Gemini", p:"Google presents a model designed from the start for several modalities."},
+ {y:2023.95, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Suno_AI"]], yr:"2023", mo:"December", s:"U", l:0, f:"gen", m:["Sound"], t:"Suno", p:"Full songs, vocals and instruments, generated from a single sentence."},
+ {y:2023.99, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Artificial_intelligence_and_copyright"]], yr:"2023", mo:"December", s:"U", l:1, f:"reg", m:[], t:"The copyright battle", p:"The New York Times sues OpenAI and Microsoft for training their models on its articles. Authors, artists and publishers file lawsuit after lawsuit."},
+ {y:2024.12, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Sora_(text-to-video_model)"], ["OpenAI", "https://openai.com/index/video-generation-models-as-world-simulators/"]], yr:"2024", mo:"February", s:"R", l:1, f:"gen", m:["Video"], t:"Sora", p:"OpenAI shows realistic one-minute videos generated from text."},
+ {y:2024.2, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Figure_AI"]], yr:"2024", mo:"March", s:"U", l:0, f:"tf", m:["Robots"], t:"A humanoid that talks", p:"Figure shows a humanoid that describes what it sees, explains its actions and hands over an apple when asked for something to eat."},
+ {y:2024.36, r:[["Wikipedia", "https://en.wikipedia.org/wiki/GPT-4o"], ["OpenAI", "https://openai.com/index/hello-gpt-4o/"]], yr:"2024", mo:"May", s:"U", l:1, f:"multi", m:["Sound","Text"], t:"Voice to voice", p:"GPT-4o listens and answers directly in audio, without going through text. It keeps the intonation, can be interrupted, and responds in real time."},
+ {y:2024.58, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Artificial_Intelligence_Act"], ["EUR-Lex", "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"]], yr:"2024", mo:"August", s:"U", l:0, f:"reg", m:[], t:"The AI Act enters into force", p:"The first comprehensive legal framework for AI, applied in stages over several years."},
+ {y:2024.7, r:[["Wikipedia", "https://en.wikipedia.org/wiki/OpenAI_o1"], ["OpenAI", "https://openai.com/index/learning-to-reason-with-llms/"]], yr:"2024", mo:"September", s:"U", l:1, f:"tf", m:["Text"], t:"The model that thinks", p:"With o1, the model produces a long chain of reasoning before answering. The more it thinks, the better its answers in math and code."},
+ {y:2024.75, r:[["OpenAI", "https://openai.com/index/introducing-the-realtime-api/"], ["Twilio", "https://investors.twilio.com/news-releases/news-release-details/twilio-announces-integration-openais-realtime-api-building"]], yr:"2024", mo:"October", s:"U", l:0, f:"multi", m:["Sound","Action"], t:"Voice agents on the phone", p:"OpenAI opens its voice-to-voice model to developers, and Twilio connects it to the phone network: any company can now put an agent on the line, one that can use tools during the call."},
+ {y:2024.77, r:[["Nobel Prize in Physics", "https://www.nobelprize.org/prizes/physics/2024/press-release/"], ["Nobel Prize in Chemistry", "https://www.nobelprize.org/prizes/chemistry/2024/press-release/"]], yr:"2024", mo:"October", s:"U", l:0, f:"dl", m:[], t:"Two Nobel Prizes for AI", p:"In physics for Hopfield and Hinton, pioneers of neural networks. In chemistry for Hassabis, Jumper and Baker, for proteins."},
+ {y:2024.81, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Claude_(AI)"], ["Anthropic", "https://www.anthropic.com/news/3-5-models-and-computer-use"]], yr:"2024", mo:"October", s:"U", l:1, f:"multi", m:["Action","Image"], t:"The agent sees the screen", p:"With computer use, Claude looks at screenshots, moves the mouse and types on the keyboard. Vision becomes a tool for acting."},
+ {y:2024.83, r:[["Physical Intelligence", "https://www.physicalintelligence.company/blog/pi0"], ["Paper", "https://arxiv.org/abs/2410.24164"]], yr:"2024", mo:"October", s:"R", l:0, f:"tf", m:["Robots"], t:"π0 folds laundry", p:"Physical Intelligence presents a generalist model that controls several kinds of robots and can fold laundry straight out of the dryer."},
+ {y:2024.9, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Model_Context_Protocol"], ["Anthropic", "https://www.anthropic.com/news/model-context-protocol"]], yr:"2024", mo:"November", s:"R", l:1, f:"tf", m:["Action"], t:"MCP", p:"Anthropic publishes an open protocol to plug any tool or data source into a model. A kind of USB port for AI."},
+ {y:2025.02, r:[["NVIDIA", "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-Launches-Cosmos-World-Foundation-Model-Platform-to-Accelerate-Physical-AI-Development/default.aspx"], ["Paper", "https://arxiv.org/abs/2501.03575"]], yr:"2025", mo:"January", s:"R", l:0, f:"tf", m:["Robots","Video"], t:"Simulated worlds to train robots", p:"NVIDIA releases Cosmos, world models that generate physically plausible video to train robots and cars without risking them in the real world."},
+ {y:2025.05, r:[["Wikipedia", "https://en.wikipedia.org/wiki/DeepSeek"], ["Paper", "https://arxiv.org/abs/2501.12948"]], yr:"2025", mo:"January", s:"R", l:0, f:"tf", m:["Text"], t:"DeepSeek-R1", p:"An open-weights reasoning model. Its small versions run locally and display their reasoning, ideal for a demo."},
+ {y:2025.11, r:[["Wikipedia", "https://en.wikipedia.org/wiki/AI_Action_Summit"]], yr:"2025", mo:"February", s:"U", l:0, f:"reg", m:[], t:"The Paris summit", p:"The AI Action Summit brings together around a hundred countries. About sixty sign the final declaration, but neither the United States nor the United Kingdom."},
+ {y:2025.15, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Claude_(AI)#Claude_Code"], ["Anthropic", "https://www.anthropic.com/news/claude-3-7-sonnet"]], yr:"2025", mo:"February", s:"U", l:1, f:"tf", m:["Action"], t:"Coding agents", p:"Claude Code, then Codex: the agent reads the project, edits the files, runs the tests and keeps fixing until they pass."},
+ {y:2025.19, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Gemini_Robotics"], ["Google DeepMind", "https://deepmind.google/blog/gemini-robotics-brings-ai-into-the-physical-world/"], ["Paper", "https://arxiv.org/abs/2503.20020"]], yr:"2025", mo:"March", s:"R", l:1, f:"multi", m:["Robots","Image","Text"], t:"The same model drives a robot", p:"Gemini Robotics starts from Gemini 2.0 and adds physical actions as a new output modality: the robot follows everyday instructions, down to folding origami."},
+ {y:2025.23, r:[["Wikipedia", "https://en.wikipedia.org/wiki/GPT_Image"], ["OpenAI", "https://openai.com/index/introducing-4o-image-generation/"]], yr:"2025", mo:"March", s:"U", l:0, f:"multi", m:["Image"], t:"The LLM draws", p:"GPT-4o and Gemini generate images themselves instead of calling a separate model."},
+ {y:2025.28, r:[["IEA", "https://www.iea.org/reports/energy-and-ai"]], yr:"2025", mo:"April", s:"U", l:1, f:"reg", m:[], t:"The energy bill", p:"The International Energy Agency estimates that data centers use about 1.5% of the world’s electricity, and that their consumption could more than double by 2030, driven by AI."},
+ {y:2025.3, r:[["Reuters", "https://news.rthk.hk/rthk/en/component/k2/1801039-20250419.htm"]], yr:"2025", mo:"April", s:"U", l:0, f:"dl", m:["Robots"], t:"Humanoids run a half marathon", p:"In Beijing, 21 robots line up alongside the runners. The winner completes the 21 km in 2 h 40, more than an hour behind the first human."},
+ {y:2025.38, r:[["Outlook Business", "https://www.outlookbusiness.com/artificial-intelligence/google-unveils-veo-3-at-io-2025-turn-text-into-video-clips-with-sound"]], yr:"2025", mo:"May", s:"R", l:1, f:"gen", m:["Video","Sound"], t:"Veo 3", p:"Google generates video and its soundtrack together, dialogue included. Video remains a separate model, but it joins sound."},
+ {y:2025.59, r:[["Wikipedia", "https://en.wikipedia.org/wiki/World_model_(artificial_intelligence)"], ["Google DeepMind", "https://deepmind.google/discover/blog/genie-3-a-new-frontier-for-world-models/"], ["TechCrunch", "https://techcrunch.com/2025/08/05/deepmind-reveals-genie-3-a-world-model-that-could-be-the-key-to-reaching-agi"]], yr:"2025", mo:"August", s:"R", l:1, f:"tf", m:["Video","Robots"], t:"Genie 3, worlds to explore", p:"Google DeepMind generates coherent worlds in real time that you can move through for several minutes. A training ground for agents and robots."},
+ {y:2026.1, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Waymo_World_Model"], ["Waymo", "https://waymo.com/blog/2026/02/the-waymo-world-model-a-new-frontier-for-autonomous-driving-simulation"]], yr:"2026", mo:"February", s:"U", l:0, f:"tf", m:["Robots"], t:"Driving trains inside a world model", p:"Waymo builds its own driving simulator on top of Genie 3. Its robotaxis are by then providing, according to the company, about half a million paid rides a week in the United States."},
+ {y:2026.19, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Advanced_Machine_Intelligence_Labs"], ["TechCrunch", "https://techcrunch.com/2026/03/09/yann-lecuns-ami-labs-raises-1-03-billion-to-build-world-models/"]], yr:"2026", mo:"March", s:"R", l:0, f:"dl", m:["Robots"], t:"LeCun’s bet, from Paris", p:"Yann LeCun leaves Meta and raises about a billion dollars for AMI Labs, which wants models that understand the physical world rather than predict text."},
+ {y:2026.27, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Claude_Mythos"], ["Anthropic", "https://www.anthropic.com/glasswing"]], yr:"2026", mo:"April 7", s:"R", l:0, f:"tf", m:["Text","Action"], t:"A model kept under lock and key", p:"Anthropic judges Claude Mythos Preview too strong at cybersecurity to release publicly: according to the company, it has found thousands of serious vulnerabilities, including in major operating systems and browsers. It is reserved for partners tasked with fixing them."},
+ {y:2026.38, r:[["Google", "https://ai.google.dev/gemini-api/docs/omni"]], yr:"2026", mo:"May", s:"U", l:1, f:"multi", m:["Video","Sound","Image","Text"], t:"Video joins the block", p:"Google presents Gemini Omni as an “any-to-any” model: text, image, sound and video as input and output, and videos you edit by chatting. Dedicated video models remain common."},
+ {y:2026.52, r:[["OpenAI", "https://openai.com/index/introducing-gpt-live/"]], yr:"2026", mo:"July", s:"U", l:0, f:"multi", m:["Sound"], t:"Listening and talking at once", p:"With GPT-Live, ChatGPT’s voice no longer takes turns: it listens while it answers, lets you interrupt, and hands hard questions to a reasoning model in the background."},
+ {y:2026.57, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Gemini_Robotics"], ["Google DeepMind", "https://deepmind.google/models/gemini-robotics/"], ["Robotics & Automation News", "https://roboticsandautomationnews.com/2026/07/31/google-deepmind-unveils-gemini-robotics-2-as-apptronik-humanoid-demonstrates-whole-body-ai/103802/"]], yr:"2026", mo:"July", s:"R", l:0, f:"multi", m:["Robots"], t:"The whole body, from feet to fingertips", p:"Gemini Robotics 2 controls a complete humanoid: walking, bending, balancing and manipulating all at once. According to Google, it unscrews a light bulb in 92% of trials."},
+ {y:2026.58, r:[["Wikipedia", "https://en.wikipedia.org/wiki/Artificial_Intelligence_Act"], ["Goodwin", "https://www.goodwinlaw.com/en/insights/publications/2026/08/alerts-technology-dpc-eu-ai-act-transparency-obligations-now-in-force"], ["EUR-Lex", "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"]], yr:"2026", mo:"August 2", s:"U", l:1, f:"reg", m:[], t:"The AI Act applies", p:"In Europe, transparency obligations take effect: disclose that people are talking to an AI, label generated content. Rules on high-risk systems are pushed back to late 2027."},
+ {era:7, y:2026.7, f:"future", future:true, r:[["Wikipedia","https://en.wikipedia.org/wiki/Robotics"]], name:"Physical AI and robotics", range:"The next stage, already in the lab", dt1:"“AI” will mean", was:"Models that perceive the physical world and act in it: walking, grasping, driving, helping at home.", dt2:"Where we stand", still:"Robotaxis in a handful of cities, humanoids in demos and industrial pilots. Far from mainstream."}
+];
+
+/* Banner: state of each modality, [date, technique, label shown] */
+const LANES = [
+ {label:"Text",   st:[[1950,"regles","Hand-written rules"],[1966,"regles","Rules (ELIZA)"],[1990,"stat","Word statistics"],[2013,"dl","Deep learning, embeddings"],[2017.45,"tf","Transformers (BERT, GPT)"],[2022.91,"gen","Conversational LLM"],[2023.73,"multi","Understands and writes"]]},
+ {label:"Image",  st:[[1950,"regles","Templates and rules (OCR)"],[1990,"stat","Machine learning"],[2012.7,"dl","Deep learning (AlexNet)"],[2014.45,"dl","Deep learning, first generated images"],[2021.01,"tf","Text ↔ image (CLIP, DALL-E)"],[2022.3,"gen","Diffusion (Midjourney, Stable Diffusion)"],[2023.73,"multi","Sees images"],[2025.23,"multi","Sees and draws"]]},
+ {label:"Sound",  st:[[1952,"regles","Rules (Audrey)"],[1990,"stat","Statistics"],[1997.45,"stat","Statistics (voice dictation)"],[2012.85,"dl","Deep learning"],[2016.7,"dl","Deep learning, natural voices"],[2022.72,"tf","Transformers (Whisper)"],[2023.05,"gen","Cloned voices (ElevenLabs)"],[2023.95,"gen","Cloned voices, generated music"],[2024.36,"multi","Listens and speaks"],[2026.52,"multi","Listens and speaks at once"]]},
+ {id:"video", label:"Video",  st:[[2017.9,"dl","Deepfakes (GAN)"],[2022.75,"gen","First generated clips"],[2024.12,"gen","Dedicated model (Sora)"],[2025.38,"gen","Dedicated model, with sound (Veo 3)"],[2026.38,"multi","Any-to-any"]]},
+ {label:"Action", st:[[1980,"regles","Expert systems"],[2016.2,"dl","Reinforcement (AlphaGo)"],[2023.45,"tf","Asks for a tool"],[2024.81,"multi","Acts: screen, tools"]]},
+ {id:"robots", label:"Robots", st:[[1966.5,"regles","Planning (Shakey)"],[1973,"regles","Programmed walking and grasping"],[1994.8,"stat","Vision and probabilities (Prometheus)"],[2005.77,"stat","Probabilities (Stanley)"],[2016.22,"dl","Deep learning (grasping, driving)"],[2019.79,"dl","Learning in simulation (Dactyl)"],[2023.57,"tf","Language drives the arm (RT-2)"],[2025.19,"multi","Drives a body, in the lab","lab"],[2026.57,"multi","Whole body, still in the lab","lab"]]}
+];
+
+function refs(r) {
+  if (!r || !r.length) return "";
+  return `<p class="refs">${r.map(([l, u]) => `<a href="${u}" target="_blank" rel="noopener noreferrer">${l}</a>`).join("")}</p>`;
+}
+const ERAS = {};
+const parts = TL.map(e => {
+  if (e.era) {
+    ERAS[e.era] = e;
+    return `<section class="row era fam-${e.f}${e.future ? " future" : ""}" id="stage-${e.era}" data-y="${e.y}" data-era="${e.era}">
+      <div class="era-num" aria-hidden="true">${e.era}</div>
+      <div class="era-main">
+        <h2>${e.name}</h2>
+        <p class="era-range">${e.range}</p>
+        <dl>
+          <div><dt>${e.dt1 || "“AI” " + (e.era === 6 ? "means" : "meant")}</dt><dd>${e.was}</dd></div>
+          <div><dt>${e.dt2 || (e.still ? "Still used for" : "What’s next")}</dt><dd>${e.still || "This is the current stage."}</dd></div>
+        </dl>
+        ${refs(e.r)}
+      </div>
+    </section>`;
+  }
+  if (e.winter) {
+    return `<div class="row winter" data-y="${e.y}"><div class="winter-box"><h3>${e.t}</h3><p class="range">${e.range}</p><p>${e.p}</p>${refs(e.r)}</div></div>`;
+  }
+  const chips = e.l && e.m.length ? `<ul class="chips" aria-label="Modalities">${e.m.map(x => `<li>${x}</li>`).join("")}</ul>` : "";
+  return `<article class="row item side-${e.s} ${e.l ? "lvl-major" : "lvl-minor"} fam-${e.f}" data-y="${e.y}">
+    <div class="when"><span class="yr">${e.yr}</span>${e.mo ? `<span class="mo">${e.mo}</span>` : ""}<span class="tag">${e.s === "R" ? "Research" : "Use"}</span>${chips}</div>
+    <span class="dot" aria-hidden="true"></span>
+    <div class="body"><h3>${e.t}</h3><p>${e.p}</p>${refs(e.r)}</div>
+  </article>`;
+});
+const tl = document.getElementById("tl");
+ERAS[0] = { name: "Before the word", f: "none" };
+tl.insertAdjacentHTML("afterbegin", parts.join(""));
+
+const strands = document.getElementById("strands");
+strands.innerHTML = LANES.map(l => `<div class="lane fam-none"><span class="lane-label">${l.label}</span><span class="bar"></span></div>`).join("");
+const laneEls = Array.from(strands.children);
+const yearEl = document.getElementById("year");
+const eraEl = document.getElementById("eraName");
+const summaryEl = document.getElementById("summary");
+const dash = document.querySelector(".dash");
+const rows = Array.from(tl.querySelectorAll(".row"));
+
+function stateAt(lane, y) {
+  let s = null;
+  for (const st of lane.st) { if (st[0] <= y) s = st; else break; }
+  return s;
+}
+function joinEn(list) {
+  if (list.length < 2) return list.join("");
+  if (list.length === 2) return list.join(" and ");
+  return list.slice(0, -1).join(", ") + ", and " + list[list.length - 1];
+}
+
+let last = { y: null, era: null };
+const isLab = s => !!(s && s[3] === "lab");
+let lastMerged = [];
+let busTimer = null;
+const bus = document.createElement("div");
+bus.className = "bus";
+bus.setAttribute("aria-hidden", "true");
+strands.appendChild(bus);
+// Trait vertical qui relie les lignes passant par un même modèle, même quand elles ne sont pas voisines.
+function positionBus() {
+  const idx = lastMerged.map((m, i) => m ? i : -1).filter(i => i >= 0);
+  if (idx.length < 2) { bus.style.opacity = "0"; return; }
+  const c = i => laneEls[i].offsetTop + laneEls[i].offsetHeight / 2;
+  const top = c(idx[0]), bottom = c(idx[idx.length - 1]);
+  bus.style.top = (top - 1.5) + "px";
+  bus.style.height = (bottom - top + 3) + "px";
+  bus.style.opacity = "1";
+}
+function applyLanes(states, merged) {
+  laneEls.forEach((el, i) => {
+    const s = states[i];
+    el.className = "lane fam-" + (s ? s[1] : "none") + (merged[i] ? " merged" : "") + (isLab(s) ? " lab" : "");
+    const txt = s ? s[2] : "Not yet";
+    const bar = el.querySelector(".bar");
+    if (bar.textContent !== txt) bar.textContent = txt;
+  });
+}
+function render(y, era) {
+  if (y === last.y && era === last.era) return;
+  last = { y, era };
+  yearEl.textContent = y < 0 ? "−" + Math.round(-y) : Math.floor(y);
+  const e = ERAS[era];
+  eraEl.className = "era-name fam-" + e.f;
+  eraEl.querySelector("span").textContent = e.name;
+
+  const states = LANES.map(l => stateAt(l, y));
+  const multi = states.filter(s => s && s[1] === "multi" && !isLab(s)).length;
+  const merged = states.map(s => !!(s && s[1] === "multi" && !isLab(s) && multi >= 2));
+  applyLanes(states, merged);
+  lastMerged = merged;
+  positionBus();
+  clearTimeout(busTimer);
+  busTimer = setTimeout(positionBus, 450);
+
+  let sum;
+  if (states.every(s => !s)) {
+    sum = "Ideas come before machines.";
+  } else if (multi < 2) {
+    sum = "Each modality has its own models.";
+  } else {
+    const names = LANES.filter((l, i) => merged[i]).map(l => l.label.toLowerCase());
+    const txt = joinEn(names);
+    sum = txt.charAt(0).toUpperCase() + txt.slice(1) + " run through a single model.";
+    const vi = LANES.findIndex(l => l.id === "video");
+    if (states[vi] && !merged[vi]) sum += " Video stays separate.";
+    if (isLab(states[LANES.findIndex(l => l.id === "robots")])) sum += " Robots are following, still in the lab.";
+  }
+  if (summaryEl.textContent !== sum) summaryEl.textContent = sum;
+}
+
+function update() {
+  const db = dash.getBoundingClientRect().bottom;
+  const ref = db + (window.innerHeight - db) * 0.3;
+  let cur = null, era = 0;
+  for (const r of rows) {
+    if (r.offsetParent === null) continue;
+    if (r.getBoundingClientRect().top <= ref) {
+      cur = r;
+      if (r.dataset.era) era = +r.dataset.era;
+    } else break;
+  }
+  render(cur ? parseFloat(cur.dataset.y) : parseFloat(rows[0].dataset.y), era);
+}
+
+let ticking = false;
+function onScroll() {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => { ticking = false; update(); });
+}
+window.addEventListener("scroll", onScroll, { passive: true });
+window.addEventListener("resize", () => { onScroll(); positionBus(); });
+
+const toggle = document.getElementById("minorToggle");
+try {
+  const saved = localStorage.getItem("ai-timeline-minor");
+  if (saved === "0") toggle.checked = false;
+} catch (err) {}
+function applyToggle() {
+  document.body.classList.toggle("simple", !toggle.checked);
+  try { localStorage.setItem("ai-timeline-minor", toggle.checked ? "1" : "0"); } catch (err) {}
+  update();
+}
+toggle.addEventListener("change", applyToggle);
+applyToggle();
+</script>
+</body>
+</html>
